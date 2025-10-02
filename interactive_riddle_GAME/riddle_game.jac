@@ -1,10 +1,10 @@
-"""An AI-Powered Riddle Game"""
+
 
 import from byllm.llm { Model }
 
 glob llm = Model(model_name="gemini/gemini-2.0-flash", verbose=False);
 
-"""Generate a riddle in JSON with fields 'riddle' and 'answer'"""
+
 def generate_riddle() -> dict[str, str] by llm();
 
 """Provide a hint based on the riddle and the wrong guess"""
@@ -17,7 +17,7 @@ walker RiddleGame {
     has forfeited: bool = False;
 
     can start with entry {
-        print("\n🎭 Welcome to the AI Riddle Game!");
+        print("\n Welcome to the AI Riddle Game!");
         print("Type your guess, or 'forfeit' to give up.\n");
 
         let data = generate_riddle();
@@ -39,12 +39,12 @@ walker RiddleGame {
         }
 
         if guess.lower() == self.answer.lower() {
-            print("✅ Correct! 🎉");
+            print(" Correct!");
             return;
         } else {
             self.attempts = self.attempts + 1;
             let hint = give_hint(self.riddle, guess);
-            print("❌ Wrong guess. 💡 Hint: " + hint);
+            print("Wrong guess.s Hint: " + hint);
             visit turn();
         }
     }
